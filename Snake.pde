@@ -41,6 +41,19 @@ void keyPressed() {
 void bewegen(){
     xpos = xpos + dx;
     ypos = ypos + dy;
+    if(xpos >= 33){
+        xpos = 0;
+    }
+    if(ypos >= 33){
+        ypos = 0;
+    }
+    if(xpos <= -1){
+        xpos = 33;
+    }
+    if(ypos <= -1){
+        ypos = 33;
+    }
+    
     fill(255, 0, 0);
     rect(xpos*25, ypos*25, 25, 25);
 }
