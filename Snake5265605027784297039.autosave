@@ -1,14 +1,15 @@
 int xpos = 16;
 int ypos = 16; 
 int dx;
-int dy;
+int dy; 
+
 
 void setup(){
     size(800, 800);
     frameRate(12);
 }
 
-
+ba
 
 void draw(){
     // Feld malen
@@ -21,21 +22,21 @@ void draw(){
 }
 
 void keyPressed() {
-    if(keyCode == 37 && dx != 1){ //Pfeil-Links
-        dx = -1;
-        dy = 0;
-    }
-    if(keyCode == 38 && dy != 1){ //Pfeil-Hoch
+    if(keyCode == 38){
         dx = 0;
         dy = -1;
     }
-    if(keyCode == 39 && dx != -1){ //Pfeil-Rechts
-        dx = 1;
-        dy = 0;
-    }
-    if(keyCode == 40 && dy != -1){ // Pfeil-Runter
+    if(keyCode == 40){
         dx = 0;
         dy = 1;
+    }
+     if(keyCode == 37){
+        dx = -1;
+        dy = 0;
+    }
+    if(keyCode == 39){
+        dx = 1;
+        dy = 0;
     }
 }
 
@@ -57,5 +58,4 @@ void bewegen(){
     
     fill(255, 0, 0);
     rect(xpos*25, ypos*25, 25, 25);
-    
 }
