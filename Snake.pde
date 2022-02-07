@@ -15,6 +15,8 @@ void draw(){
         line(i, 0, i, 800);
         line(0, i, 800, i);
     }
+
+    bewegen();
 }
 
 void keyPressed() {
@@ -39,4 +41,6 @@ void keyPressed() {
 void bewegen(){
     xpos = xpos + dx;
     ypos = ypos + dy;
+    fill(255, 0, 0);
+    rect(xpos*25, ypos*25, 25, 25);
 }
