@@ -1,7 +1,7 @@
-void setup(){
-    size(800, 800);
-   
-}
+int xpos = 16;
+int ypos = 16; 
+int dx;
+int dy; 
 
 void draw(){
     // Feld malen
@@ -23,7 +23,7 @@ void setup(){
 
 void draw(){
     // Feld malen
-    background(grey);
+    background(190,190,190);
      for(int i = 0; i < 800; i+=25){
         line(i, 0, i, 800);
         line(0, i, 800, i);
@@ -33,8 +33,8 @@ void draw(){
 
 void keyPressed() {
     if(keyCode == 38){
-        dx = 0
-        dy = -1
+        dx = 0;
+        dy = -1;
     }
     if(keyCode == 40){
         dx = 0;
