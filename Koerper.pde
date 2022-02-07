@@ -8,6 +8,6 @@ public class Koerper{
 
     public void apfel_zeichnen(){
         fill(0,250,0);
-        rect(xpos, ypos, 25, 25);
+        rect(xpos*25, ypos*25, 25, 25);
     }
 }

@@ -7,9 +7,9 @@ Koerper apfel;
 
 void setup(){
     size(800, 800);
-    frameRate(10);
+    frameRate(12);
     koerperliste = new List<Koerper>();
-    apfel = new Koerper((int)random(0, 32),(int)random(0,32));
+    apfel = new Koerper((int)random(0, 32)*25,(int)random(0,32)*25);
 }
 
 void draw(){
@@ -22,9 +22,6 @@ void draw(){
     bewegen();
 
     apfel.apfel_zeichnen();
-    if(checkCollision()){
-        apfelEssen();
-    }
     
 }
 
@@ -67,13 +64,7 @@ void bewegen(){
     rect(xpos*25, ypos*25, 25, 25);
 }
 
-public boolean checkCollision(){
-    println((apfel.xpos == xpos) && (apfel.ypos == ypos));
+ public boolean checkCollision(){
     return (apfel.xpos == xpos) && (apfel.ypos == ypos);
-    
-}
-
-public void apfelEssen(){
-    apfel = new Koerper((int)random(0, 32),(int)random(0,32));
-    //Zähler einbauen hier & oben 
+    println((apfel.xpos == xpos) && (apfel.ypos == ypos));
 }
