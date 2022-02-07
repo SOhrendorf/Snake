@@ -2,13 +2,15 @@ int xpos = 16;
 int ypos = 16; 
 int dx;
 int dy;
+static List<Koerper> koerperliste;
+Koerper apfel; 
 
 void setup(){
     size(800, 800);
     frameRate(12);
+    koerperliste = new List<Koerper>();
+    apfel = new Koerper((int)random(0, 32)*25,(int)random(0,32)*25);
 }
-
-
 
 void draw(){
     // Feld malen
@@ -18,6 +20,8 @@ void draw(){
         line(0, i, 800, i);
     }
     bewegen();
+
+    apfel.apfel_zeichnen();
 }
 
 void keyPressed() {
@@ -57,5 +61,4 @@ void bewegen(){
     
     fill(255, 0, 0);
     rect(xpos*25, ypos*25, 25, 25);
-    
 }
