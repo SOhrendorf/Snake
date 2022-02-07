@@ -22,7 +22,7 @@ void draw(){
     bewegen();
 
     apfel.apfel_zeichnen();
-    if(checkCollision(apfel)){
+    if(checkCollision()){
         apfelEssen();
     }
     
@@ -67,7 +67,7 @@ void bewegen(){
     rect(xpos*25, ypos*25, 25, 25);
 }
 
-public boolean checkCollision(Koerper pObject){
+public boolean checkCollision(<ContentType> pObject){
     println((pObject.xpos == xpos) && (pObject.ypos == ypos));
     return (pObject.xpos == xpos) && (pObject.ypos == ypos);
     
