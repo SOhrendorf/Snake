@@ -44,7 +44,6 @@ void restart(){
     dy = 0;
     setup();
     loop();
-    //hier die restart routine ergänzen
 }
 
 public void gameOver(){
@@ -90,8 +89,7 @@ void draw(){
     //Apfel zeichnen & bei Collison umpositionieren & neues Körperteil veranlassen
     fill(0,250,0);
     apfel.apfel_zeichnen();
-    println((apfel.xpos == kopf.xpos) && (apfel.ypos == kopf.ypos));
-    if((apfel.xpos == kopf.xpos) && (apfel.ypos == kopf.ypos)){
+      if(apfel.collision(kopf.xpos, kopf.ypos)){
         println("mumpf");
         apfelEssen();
         neuesKoerperteil();
@@ -180,7 +178,7 @@ public boolean bitSlef(){
     koerperliste.next(); 
     do{
         if(koerperlaenge >= 4){ // ein Körperlänge ereicht die sich selbst beisen kann? 
-            if((kopf.xpos == koerperliste.getContent().xpos) && (kopf.ypos == koerperliste.getContent().ypos)){
+            if(koerperliste.getContent().collision(kopf.xpos, kopf.ypos)){
                 return true; // joa slebt gebissen
             }
         }
