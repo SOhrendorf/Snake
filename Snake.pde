@@ -2,12 +2,12 @@ import processing.sound.*;
 int dx = 0;
 int dy = 0;
 int koerperlaenge = 0;
-int score = 0;
-boolean keypressdOkay = true;
-static List<Koerper> koerperliste;
-static List<Apfel> barrierListe;
+int score = 0; 
+List<Koerper> koerperliste;
+List<Koerper> koerperliste2;
 Apfel apfel;
 Koerper kopf;
+Koerper kopf2;
 Koerper body;
 Highscore oHighscore;
 SoundFile sHintergrund;
@@ -21,6 +21,7 @@ void setup(){
     koerperliste = new List<Koerper>();
     barrierListe = new List<Apfel>();
     kopf = new Koerper(16, 16);
+    kopf2 = new Koerper(16, 16);
     koerperliste.append(kopf);
     apfel = new Apfel();
     oHighscore = new Highscore();
@@ -99,7 +100,14 @@ void draw(){
       }
 
     if(bitSlef()){
-      gameOver();
+        if(score > oHighscore.highscore){
+          sHigh.play();
+          oHighscore.saveNewHighscore(score);
+        }
+        sDie.play();
+        println("Stop Game");
+        sHintergrund.stop();
+        noLoop();
     }
 }
 
@@ -125,7 +133,23 @@ void keyPressed() {
         dy = 1;
         keypressdOkay = false;
     }
-  }
+    if(keyCode == 65 && dx != 1){ //Pfeil-Links A
+        dx = -1;
+        dy = 0;
+    }
+    if(keyCode == 87 && dy != 1){ //Pfeil-Hoch W
+        dx = 0;
+        dy = -1;
+    }
+    if(keyCode == 68 && dx != -1){ //Pfeil-Rechts D
+        dx = 1;
+        dy = 0;
+    }
+    if(keyCode == 83 && dy != -1){ // Pfeil-Runter S
+        dx = 0;
+        dy = 1;
+    }
+
     if(keyCode == 32){
       println("Restart");
         restart();
