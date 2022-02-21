@@ -5,7 +5,7 @@ int koerperlaenge = 0;
 int score = 0;
 boolean keypressdOkay = true;
 static List<Koerper> koerperliste;
-static List<Apfel> barrierListe;
+static List<Obstacle> barrierListe;
 Apfel apfel;
 Koerper kopf;
 Koerper body;
@@ -19,7 +19,7 @@ void setup(){
     size(800, 800);
     frameRate(6);
     koerperliste = new List<Koerper>();
-    barrierListe = new List<Apfel>();
+    barrierListe = new List<Obstacle>();
     kopf = new Koerper(16, 16);
     koerperliste.append(kopf);
     apfel = new Apfel();
@@ -55,7 +55,17 @@ public void gameOver(){
         println("Stop Game");
         sHintergrund.stop();
         noLoop();
-}
+        background(255);
+        fill(255,0,0);
+        textSize(50);
+        text("Game over",270, 300);
+        textSize(30);
+        fill(0);
+        text("score: " + score, 310, 400);
+        text("Highscore: " + oHighscore.highscore, 280, 450);
+        textSize(20);
+        text("press space to restart the game", 250, 750);
+      }
 
 void draw(){
     keypressdOkay = true;
@@ -92,7 +102,7 @@ void draw(){
       while(barrierListe.hasAccess()){
         fill(255,0,255);
         barrierListe.getContent().apfel_zeichnen();
-        if(kopf.xpos == barrierListe.getContent().xpos && kopf.ypos == barrierListe.getContent().ypos){
+        if (barrierListe.getContent().collision(kopf.xpos, kopf.ypos)) {
           gameOver();
         }
         barrierListe.next();
@@ -174,12 +184,12 @@ public boolean bitSlef(){
                 return true; // joa slebt gebissen
             }
         }
-        koerperliste.next();
+        koerperliste.next(); 
     }while(koerperliste.hasAccess()); // solange widerholen, bis das leztzt Glied überprüft wurde
     return false;
 }
 
 public void spawnBarrier(){
-  Apfel barrier = new Apfel();
+  Obstacle barrier = new Obstacle();
   barrierListe.append(barrier);
 }
