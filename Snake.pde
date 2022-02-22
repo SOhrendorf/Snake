@@ -47,7 +47,7 @@ void restart(){
 }
 
 public void gameOver(){
-          if(score > oHighscore.highscore){
+          if(score >= oHighscore.highscore){
           oHighscore.saveNewHighscore(score);
         }
         sDie.play();
