@@ -109,6 +109,12 @@ void draw(){
     if(bitSlef()){
       gameOver();
     }
+    
+    if(score > oHighscore.highscore){
+      oHighscore.highscore = score;
+      sHigh.play();
+      println("new highscore");
+    }
 }
 
 void keyPressed() {
@@ -138,6 +144,7 @@ void keyPressed() {
       println("Restart");
         restart();
     }
+    
 }
 
 
